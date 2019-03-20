@@ -1,0 +1,58 @@
+﻿@model AttributesRequired.Models.Person
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div> 
+
+        @if(!String.IsNullOrWhiteSpace(ViewData["Message"] as String))
+        {
+            <p>@ViewData["Message"]</p>
+        }
+
+        @using (Html.BeginForm())
+        {
+            Html.ValidationSummary(true);
+
+            <fieldset>
+                <legend>Add a friend...</legend>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.First)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.First)
+                    @Html.ValidationMessageFor(model => model.First)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Last)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Last)
+                    @Html.ValidationMessageFor(model => model.Last)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Age)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Age)
+                    @Html.ValidationMessageFor(model => model.Age)
+                </div>
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        }
+    </div>
+</body>
+</html>
